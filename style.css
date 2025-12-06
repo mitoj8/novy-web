@@ -39,7 +39,7 @@ body {
 .topbar {
     width: 100%;
     max-width: 900px;
-    margin: 0 auto 24px;
+    margin: auto auto 24px;
     padding: 16px 20px;
 
     display: flex;
@@ -317,4 +317,47 @@ button:active {
 .blog-card p {
     line-height: 1.6;
     color: var(--text-muted);
+}
+
+.dictionary {
+    max-width: 900px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.dictionary h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.term {
+    margin-bottom: 12px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+.term-title {
+    width: 100%;
+    padding: 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.term-definition {
+    padding: 0 16px 16px;
+    display: none;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.term.open .term-definition {
+    display: block;
 }

@@ -76,3 +76,37 @@ if (blogList) {
             blogList.textContent = "Nepodarilo sa načítať články.";
         });
 }
+
+// slovník pojmov - kliknutím otvorenie/zatvorenie
+const dictionaryList = document.getElementById("dictionary-list");
+
+if (dictionaryList) {
+    fetch("terms.json")
+        .then(response => response.json())
+        .then(termsData => {
+            termsData.forEach(item => {
+                const termDiv = document.createElement("div");
+                termDiv.className = "term";
+                termDiv.innerHTML = `
+                    <button class="term-title">${item.term}</button>
+                    <p class="term-definition">
+                        ${item.definition}
+                    </p>
+                `;
+                dictionaryList.appendChild(termDiv);
+            });
+
+            // po tom, čo sme ich vložili, pridáme logiku na rozbaľovanie
+            const terms = document.querySelectorAll(".term");
+            terms.forEach(term => {
+                const title = term.querySelector(".term-title");
+                title.addEventListener("click", () => {
+                    term.classList.toggle("open");
+                });
+            });
+        })
+        .catch(error => {
+            console.error("Nepodarilo sa načítať slovník:", error);
+            dictionaryList.textContent = "Nepodarilo sa načítať slovník.";
+        });
+}
