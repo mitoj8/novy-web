@@ -36,3 +36,43 @@ function checkFadeIn() {
 
 window.addEventListener('scroll', checkFadeIn);
 window.addEventListener('load', checkFadeIn);
+
+// dark mode
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
+// mobilné menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const nav = document.querySelector(".nav");
+
+if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("nav-open");
+    });
+}
+
+// render článkov do blog sekcie z json
+const blogList = document.getElementById("blog-list");
+
+if (blogList) {
+    fetch("articles.json")
+        .then(response => response.json())
+        .then(articles => {
+            articles.forEach(article => {
+                const card = document.createElement("div");
+                card.className = "blog-card";
+                card.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.text}</p>
+                `;
+                blogList.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error("Nepodarilo sa načítať články:", error);
+            blogList.textContent = "Nepodarilo sa načítať články.";
+        });
+}

@@ -11,11 +11,13 @@
 <body>
     <header class="topbar">
         <div class="logo">Ekonómia zrozumiteľne</div>
+        <button class="menu-toggle" id="menu-toggle">Menu</button>
         <nav class="nav">
             <a href="index.html">Domov</a>
             <a href="index.html#about">O projekte</a>
             <a href="articles.html">Články</a>
         </nav>
+        <button id="theme-toggle" class="theme-toggle">🌓</button>
     </header>
 
     <div class="main">
@@ -23,6 +25,13 @@
         <p>Prehľad článkov o ekonómii vysvetlených jednoducho.</p>
         <a href="#about" class="cta-button">Začať čítať</a>
     </div>
+
+    <section class="blog">
+        <h2>Články</h2>
+        <div id="blog-list">
+            <!-- sem javascript vloží články-->
+        </div>
+    </section>
 
     <section class="topics">
         <h2>Témy ekonómie</h2>
@@ -46,5 +55,6 @@
         </div>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
