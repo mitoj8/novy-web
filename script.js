@@ -58,7 +58,7 @@ if (menuToggle && nav) {
 const blogList = document.getElementById("blog-list");
 
 if (blogList) {
-    fetch("articles.js")
+    fetch("articles.json")
         .then(response => response.json())
         .then(articles => {
             articles.forEach(article => {
