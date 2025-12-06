@@ -87,12 +87,19 @@ if (dictionaryList) {
             termsData.forEach(item => {
                 const termDiv = document.createElement("div");
                 termDiv.className = "term";
-                termDiv.innerHTML = `
-                    <button class="term-title">${item.term}</button>
-                    <p class="term-definition">
-                        ${item.definition}
-                    </p>
-                `;
+
+                const btn = document.createElement("button");
+                btn.className = "term-title";
+                btn.textContent = item.term;
+
+                const def = document.createElement("p");
+                def.className = "term-definition";
+                def.textContent = item.definition;
+
+                def.style.display = "none";
+
+                termDiv.appendChild(btn);
+                termDiv.appendChild(def);
                 dictionaryList.appendChild(termDiv);
             });
 
@@ -100,8 +107,13 @@ if (dictionaryList) {
             const terms = document.querySelectorAll(".term");
             terms.forEach(term => {
                 const title = term.querySelector(".term-title");
+                const def = term.querySelector(".term-definition");
                 title.addEventListener("click", () => {
-                    term.classList.toggle("open");
+                    if (def.style.display === "none") {
+                        def.style.display = "block";
+                    } else {
+                        def.style.display = "none";
+                    }
                 });
             });
         })
